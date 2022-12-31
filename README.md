@@ -3,7 +3,7 @@
 **The Project is based to create a responsive registration form for a event**. 
 ***
 ##  2. About 
-_Here, we have created a registration form with the option of delete , edit and add new records
+_Here, we have created a registration form with the option of delete , edit and add new records._
 ***
 ##  3. What you have to do :grey_question:
   
