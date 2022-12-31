@@ -1,7 +1,15 @@
 <?php
-$title = 'Index';
+$title = 'exit';
 require_once 'includes/header.php';
 require_once 'db/conn.php';
+if(!isset($_GET['id'])){
+    include 'includes/error.php';
+}
+else{
+    $id = $_GET['id'];
+    $attendee = $crud->getAttendeeDetails($id);
+
+
 ?>
 
 <!--
@@ -12,24 +20,25 @@ require_once 'db/conn.php';
 --Speciality(Databse admin , Software developer, Web Administrator)
 --Email Address
 -->
-<h1 class="text-center">Registration for IT conference</h1>
+<h1 class="text-center">EDIT records</h1>
 
-<form method="POST" action="success_post.php">
+<form method="POST" action="editpost.php">
+    <input type = "hidden" name = "id" value ="<?php echo $attendee["id"]?>"/>
     <div class="mb-3">
         <label for="firstname" class="form-label">First Name</label>
-        <input required type="text" class="form-control" id="firstname" name="firstname">
+        <input type="text" class="form-control" id="firstname" name="firstname" value="<?php echo $attendee["firstname"]?>">
     </div>
     <div class="mb-3">
         <label for="lastname" class="form-label">Last Name</label>
-        <input required type="text" class="form-control" id="lastname" name="lastname">
+        <input type="text" class="form-control" id="lastname" name="lastname" value="<?php echo $attendee["lastname"]?>">
     </div>
     <div class="mb-3">
         <label for="contact" class="form-label">Contact Number</label>
-        <input required type="number" class="form-control" id="contact" name = "contact">
+        <input type="number" class="form-control" id="contact" name = "contact" value="<?php echo $attendee["contact"]?>">
     </div>
     <div class="mb-3">
         <label for="dateofbirth" class="form-label">Date Of Birth</label>
-        <input required type="text" class="form-control" id="dateofbirth" name="dateofbirth">
+        <input type="text" class="form-control" id="dateofbirth" name="dateofbirth" value="<?php echo $attendee["dateofbirth"]?>">
     </div>
     <div class="mb-3">
         <label for="speciality" class="form-label">Area Of Expertise</label>
@@ -43,15 +52,16 @@ require_once 'db/conn.php';
     </div>
     <div class="mb-3">
         <label for="email" class="form-label">Email address</label>
-        <input required type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
+        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" value="<?php echo $attendee["email"]?>">
         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
     </div>
     <div class="d-grid gap-2">
-    <button type="submit" class="btn btn-primary btn-block" name="submit">Submit</button>
+    <button type="submit" class="btn btn-success btn-block" name="submit">Submit</button>
         </div>
       
 </form>
-
+<?php 
+}?>
 <br>
 <br>
 <br>
