@@ -14,7 +14,7 @@ require_once 'db/conn.php';
 -->
 <h1 class="text-center">Registration for IT conference</h1>
 
-<form method="POST" action="success_post.php">
+<form method="POST" action="success_post.php" enctype="multipart/form-data">
     <div class="mb-3">
         <label for="firstname" class="form-label">First Name</label>
         <input required type="text" class="form-control" id="firstname" name="firstname">
@@ -25,7 +25,7 @@ require_once 'db/conn.php';
     </div>
     <div class="mb-3">
         <label for="contact" class="form-label">Contact Number</label>
-        <input required type="number" class="form-control" id="contact" name = "contact">
+        <input required type="number" class="form-control" id="contact" name="contact">
     </div>
     <div class="mb-3">
         <label for="dateofbirth" class="form-label">Date Of Birth</label>
@@ -46,10 +46,15 @@ require_once 'db/conn.php';
         <input required type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
     </div>
+    <div class="mb-3">
+    <label for="avatar" class="form-label">File Upload(Optional)</label>
+    <input type="file" accept="image/*" class="form-control" name="file" id="avatar">
+    </div>
+    
     <div class="d-grid gap-2">
-    <button type="submit" class="btn btn-primary btn-block" name="submit">Submit</button>
-        </div>
-      
+        <button type="submit" class="btn btn-primary btn-block" name="submit">Submit</button>
+    </div>
+
 </form>
 
 <br>

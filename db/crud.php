@@ -6,10 +6,10 @@ class crud
     {
         $this->db = $conn;
     }
-    public function insert($fname, $lname, $contact, $dob, $speciality, $email)
+    public function insert($fname, $lname, $contact, $dob, $speciality, $email,$avatar)
     {
         try {
-            $sql = "INSERT INTO attendees( `firstname`,`lastname`,`contact`,`dateofbirth`,`speciality`,`email`) VALUES (  :fname , :lname ,:contact , :dob , :speciality, :email) ";
+            $sql = "INSERT INTO attendees( `firstname`,`lastname`,`contact`,`dateofbirth`,`speciality`,`email`,`avatar`) VALUES (  :fname , :lname ,:contact , :dob , :speciality, :email,:avatar) ";
             $stmt = $this->db->prepare($sql);
             $stmt->bindparam(':fname', $fname);
             $stmt->bindparam(':lname', $lname);
@@ -17,6 +17,7 @@ class crud
             $stmt->bindparam(':dob', $dob);
             $stmt->bindparam(':speciality', $speciality);
             $stmt->bindparam(':email', $email);
+            $stmt->bindparam(':avatar', $avatar);
             $stmt->execute();
             return true;
         } catch (PDOException $e) {

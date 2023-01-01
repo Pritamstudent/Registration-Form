@@ -9,7 +9,12 @@ if (isset($_POST['submit'])) {
   $speciality = $_POST["speciality"];
   $contact = $_POST["contact"];
   $email = $_POST["email"];
-  $isSuccess = $crud->insert($fname, $lname, $contact, $dob, $speciality, $email);
+  $orig_file = $_FILES['file']['tmp_name'];
+  $ext = pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION);
+  $target_dir = 'uploads/';
+  $destination = "$target_dir$contact.$ext";
+  move_uploaded_file($orig_file,$destination);
+  $isSuccess = $crud->insert($fname, $lname, $contact, $dob, $speciality, $email,$destination);
   if ($isSuccess) {
     include "includes/successmessage.php";
   } else {
@@ -18,6 +23,7 @@ if (isset($_POST['submit'])) {
 
 ?>
 <div class="card" style="width: 18rem;">
+<img src="<?php echo $destination ; ?>" class="card-img-top" alt="profile image">
   <div class="card-body">
     <h5 class="card-title"> <?php echo $_POST["firstname"] . ' ' .  $_POST["lastname"]; ?></h5>
     <h6 class="card-subtitle mb-2 text-muted"><?php echo $_POST["speciality"]; ?></h6>

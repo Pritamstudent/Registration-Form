@@ -1,6 +1,8 @@
 <?php
 $title = 'Registration page';
-require_once './includes/header.php'; ?>
+require_once './includes/header.php'; 
+require_once 'includes/auth_check.php';
+?>
 <h1 class="text-center text-success">
     Registration successfull
 </h1>
